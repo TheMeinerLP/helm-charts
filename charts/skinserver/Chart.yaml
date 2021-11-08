@@ -28,3 +28,10 @@ dependencies:
 - name: mongodb
   repository: https://charts.bitnami.com/bitnami
   version: 10.29.0
+  condition: mongodb.enabled
+
+configureRepositories:
+  enable: true
+  repositories:
+    - name: https://charts.bitnami.com/bitnami
+      url: https://charts.bitnami.com/bitnami

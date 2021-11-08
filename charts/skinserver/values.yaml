@@ -89,3 +89,6 @@ properties:
     data: 
       mongodb:
         host: skinserver-mongodb
+
+mongodb:
+  enabled: true
