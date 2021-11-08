@@ -1,0 +1,18 @@
+{{- if .Values.rbac.create }}
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    {{- include "skinserver.labels" . | nindent 4 }}
+  name: {{ template "skinserver.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ template "skinserver.fullname" . }}
+subjects:
+- kind: ServiceAccount
+  name: {{ include "skinserver.serviceAccountName" . }}
+  namespace: {{ .Release.Namespace }}
+{{- end -}}

@@ -1,0 +1,14 @@
+{{- if .Values.rbac.create }}
+
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  labels:
+    {{- include "skinserver.labels" . | nindent 4 }}
+  name: {{ template "skinserver.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+rules:
+  - apiGroups: [""]
+    resources: ["configmaps", "pods", "services", "endpoints", "secrets"]
+    verbs: ["get", "list", "watch"]
+{{- end -}}

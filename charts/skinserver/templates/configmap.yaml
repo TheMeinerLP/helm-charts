@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "skinserver.fullname" . }}
+  labels:
+    {{- include "skinserver.labels" . | nindent 4 }}
+data:
+  spring.data.mongodb.host: {{ .Values.properties.spring.data.mongodb.host }}
+    
